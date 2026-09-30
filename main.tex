@@ -1,0 +1,736 @@
+\documentclass[12pt,a4paper]{report}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{tocloft} % Added to customize Table of Contents structure
+
+% ── TOC Customization (Fixes Screenshot 2026-06-04 072015.png layout mismatch) 
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % Forces dot leaders for all chapters in TOC
+
+% ── Package Configuration & Link Colors ─────────────────────────────────────
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,     % Set to black for professional report printing
+    urlcolor=blue
+}
+
+% ── Page style & Layout Fixes ─────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{14.5pt} 
+\addtolength{\topmargin}{-2.5pt} 
+
+\rhead{\small AI Virtual Mouse}
+\lhead{\small Dr. Bapuji Salunkhe Institute of Engineering and Technology}
+\cfoot{\thepage}
+
+% ── Section formatting ────────────────────────────────────────────────────────
+\titleformat{\chapter}[display]
+  {\normalfont\large\bfseries\centering}{Chapter \thechapter}{12pt}{\Large}
+\titlespacing*{\chapter}{0pt}{20pt}{20pt}
+
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\onehalfspacing
+
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{document}
+
+% ── Title Page ────────────────────────────────────────────────────────────────
+\begin{titlepage}
+  \centering
+  \vspace*{1cm}
+
+  {\Large\bfseries A mini project report on}\\[0.4cm]
+  {\LARGE\bfseries ``AI VIRTUAL MOUSE''}\\[0.6cm]
+
+  {\normalsize Submitted in Partial Fulfillment for the Requirement of}\\[0.2cm]
+  {\large\bfseries Third Year}\\[0.1cm]
+  {\normalsize In}\\[0.1cm]
+  {\large\bfseries Computer Science and Engineering}\\[0.6cm]
+
+  {\normalsize Submitted to}\\[0.4cm]
+  {\large\bfseries Dr.\ Babasaheb Ambedkar Technological University, Lonere}\\[0.6cm]
+
+  {\normalsize By}\\[0.4cm]
+  \begin{tabular}{ll}
+    Pranav Gavali       & (23064681242046) \\
+    Varad Sawant        & (23064681242048) \\
+    Bhumika Dhumal      & (24064681242505) \\
+    Samruddhi Majgaonkar & (24064681242504) \\
+    Prachi Shinde       & (24064681242503) \\
+  \end{tabular}\\[0.6cm]
+
+  {\normalsize Under the Guidance of}\\[0.2cm]
+  {\large\bfseries Prof.\ V.S.\ Jadhav}\\[0.8cm]
+
+  {\large\bfseries Department of Computer Science and Engineering}\\[0.2cm]
+  {\large\bfseries Dr.\ Bapuji Salunkhe Institute of Engineering and Technology,}\\
+  {\normalsize 2130, E ward, Tarabai Park, Kolhapur}\\[0.4cm]
+  {\large\bfseries Academic Year 2025--2026}
+
+  \vfill
+  \hrule\vspace{0.3cm}
+  {\small External Examiner: \underline{\hspace{4cm}} \hfill Department of \underline{\hspace{4cm}}}
+\end{titlepage}
+
+% ── Certificate ───────────────────────────────────────────────────────────────
+\chapter*{Certificate}
+\addcontentsline{toc}{chapter}{Certificate}
+\thispagestyle{plain}
+
+\begin{center}
+  {\large\bfseries Department of Computer Science and Engineering}\\[0.2cm]
+  {\normalsize Shree Swami Vivekanand Shikshan Sanstha's\\
+  Dr.\ Bapuji Salunkhe Institute of Engineering and Technology}\\[0.6cm]
+  {\LARGE\bfseries\color{red} CERTIFICATE}
+\end{center}
+
+\vspace{0.5cm}
+This is to certify that the mini project entitled:
+
+\begin{center}
+  {\large\bfseries\color{red} ``AI VIRTUAL MOUSE''}
+\end{center}
+
+Submitted by the following students:
+
+\begin{center}
+  \begin{tabular}{ll}
+    Pranav Gavali        & (23064681242046) \\
+    Varad Sawant         & (23064681242048) \\
+    Bhumika Dhumal       & (24064681242505) \\
+    Samruddhi Majgaonkar & (24064681242504) \\
+    Prachi Shinde        & (24064681242503) \\
+  \end{tabular}
+\end{center}
+
+has been successfully completed under the guidance of \textbf{Prof.\ V.S.\ Jadhav} during the
+\textbf{Academic Year 2025--2026}. This report is submitted in partial fulfillment of the
+requirements for the Third Year Mini Project in Computer Science and Engineering.
+
+\vspace{1.5cm}
+\begin{tabular}{p{6cm}p{6cm}}
+  \textbf{Dr.\ R.\ D.\ Bhosale}      & \textbf{Prof.\ V.S.\ Jadhav} \\
+  Project Coordinator                 & Project Guide                 \\
+\end{tabular}
+
+\vspace{1.5cm}
+\begin{tabular}{p{5cm}p{4cm}p{4cm}}
+  \textbf{Mr.\ A.\ R.\ Sawant}        & \textbf{Dr.\ S.\ G.\ Sapate} & \\
+  H.O.D.                              & Principal                     & External Examiner \\
+  Dept.\ of Computer Science \& Engg. & & \\
+\end{tabular}
+
+% ── Acknowledgement ───────────────────────────────────────────────────────────
+\chapter*{Acknowledgement}
+\addcontentsline{toc}{chapter}{Acknowledgement}
+
+We take this opportunity to express our sincere gratitude to our respected project guide,
+\textbf{Prof.\ V.\ S.\ Jadhav}, for providing us with the chance to work on this image processing
+project and for offering feedback and suggestions that helped make this project feasible. This
+project could not have been accomplished without her leadership. Her insightful feedback,
+constructive criticism, and timely suggestions were instrumental in shaping the direction of
+this research.
+
+We express our sincere thanks to the respected Principal, \textbf{Dr.\ S.G.\ Sapate}, for
+providing the necessary facilities and academic environment.
+
+We are thankful to the respected Head of Department, \textbf{Prof.\ A.R.\ Sawant}, Department
+of Computer Engineering, for departmental support and encouragement.
+
+We are also thankful to all teaching and non-teaching staff members of the department for their
+cooperation and support.
+
+Lastly, we want to express our gratitude to our close companions and family members for their
+inspiration and steadfast support throughout this journey.
+
+\vspace{1cm}
+\begin{flushright}
+  Pranav P.\ Gavali (43139)\\
+  Varad N.\ Sawant (43142)\\
+  Prachi P.\ Shinde (43143)\\
+  Samruddhi S.\ Majgaonkar (43144)\\
+  Bhumika S.\ Dhumal (43146)
+\end{flushright}
+
+% ── Abstract ──────────────────────────────────────────────────────────────────
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+The AI Virtual Mouse is a gesture-based controller application that utilizes hand gestures
+captured through a webcam to perform various system control functions, leveraging the
+\textbf{MediaPipe} library for hand tracking and gesture recognition. The application is
+structured into \textit{Gesture Encodings}, \textit{Hand Recognition}, and \textit{Controller}
+classes, and interprets hand movements to execute corresponding commands such as cursor
+movement, clicking, scrolling, and system parameter adjustments including volume and
+brightness control.
+
+The system discerns a range of hand gestures including fist, V-gesture, and pinch to enable
+diverse actions. It intelligently differentiates between major and minor hands, assigning
+specific functionalities accordingly. The \texttt{GestureController} class manages webcam
+initialization, hand landmark capture, and processing. This application presents a real-time
+interface for intuitive system interaction via hand gestures, offering a novel means of
+navigating and controlling computer functions without the need for physical input devices.
+
+\newpage  % ← forces Table of Contents onto a new page
+
+% ── Table of Contents ─────────────────────────────────────────────────────────
+\tableofcontents
+
+% ══════════════════════════════════════════════════════════════════════════════
+\chapter{Introduction}
+
+In a world driven by technological innovation, the way we interact with our digital devices
+plays a pivotal role in our daily lives. Traditional input devices, such as mice and touchpads,
+have long been the standard for navigating the digital realm. However, as the frontiers of
+technology continue to expand, a new paradigm in human-computer interaction emerges in the
+form of the AI Virtual Mouse.
+
+The AI Virtual Mouse represents a groundbreaking fusion of artificial intelligence (AI),
+computer vision, and machine learning, designed to revolutionize the way we control and
+navigate digital interfaces. This cutting-edge technology eliminates the need for physical
+pointing devices and, instead, leverages the subtlety of our hand movements and gestures to
+manipulate the digital world.
+
+\section{Background of Concept}
+
+The concept behind the AI Virtual Mouse is to create a gesture-based controller using
+computer vision techniques. The system utilizes the MediaPipe library to detect and track
+hand movements in real-time using a webcam. By analyzing the hand landmarks detected by the
+library, the system maps specific hand gestures to predefined actions or commands, such as
+controlling the mouse cursor, clicking, scrolling, adjusting system settings like brightness
+and volume, and more. The system provides visual feedback by overlaying hand landmarks and
+recognized gestures on the webcam feed, allowing users to monitor their interactions. Overall,
+the system demonstrates an intuitive and hands-free way for users to interact with their
+computers through gestures, enhancing accessibility and user experience.
+
+\section{Problem Specification}
+
+The problem addressed in this project is the need for a more accessible and efficient cursor
+control system through the development and implementation of an AI-driven virtual mouse.
+Traditional input methods such as physical mice and touchpads are impractical or limiting for
+certain users, especially those with disabilities.
+
+The system should accurately recognize hand gestures in real-time and map them to specific
+actions or commands, such as controlling the mouse cursor, clicking, scrolling, adjusting
+system settings like brightness and volume, and more. The system should provide a
+user-friendly interface and ensure smooth and intuitive interaction. Additionally, the system
+should be robust to noise and variations in hand movements, providing reliable performance
+across different environments and conditions.
+
+% ══════════════════════════════════════════════════════════════════════════════
+\chapter{Related Studies / Literature Survey}
+
+\section{Literature Survey}
+
+Several researchers and developers have worked on gesture-based computer interaction systems.
+Numerous studies have investigated the use of computer vision techniques, such as hand
+tracking and landmark detection, to interpret human gestures for Human-Computer Interaction
+(HCI) applications.
+
+\begin{longtable}{>{\bfseries}p{3cm} p{3.5cm} p{2.5cm} p{4.5cm}}
+\caption{Summary of Related Work} \label{tab:litsurvey} \\
+\toprule
+\textbf{Author} & \textbf{System / Method} & \textbf{Technology} & \textbf{Outcome / Limitation} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Author} & \textbf{System / Method} & \textbf{Technology} & \textbf{Outcome / Limitation} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Cao et al.\ (2018)  & OpenPose -- real-time multi-person body/hand keypoint detection & Deep Learning, Computer Vision & Enabled gesture recognition for various tasks; computationally intensive. \\[4pt]
+Simon et al.\ (2017) & Real-time hand gesture recognition using depth data & Depth Sensors, CNN & Facilitated intuitive interactions in virtual environments; required special hardware. \\[4pt]
+Sun et al.\ (2019)  & Deep learning-based hand gesture recognition method & Deep Learning & Achieved high performance in real-world scenarios. \\[4pt]
+Zhang et al.\ (2020) & CNN-based hand gesture recognition & Convolutional Neural Networks & Superior performance compared to traditional approaches. \\[4pt]
+Guna et al.\ (2014) & Gesture-based interaction in healthcare settings & Computer Vision & Enabled hands-free control of medical devices for healthcare professionals. \\
+\end{longtable}
+
+\section{Existing Systems}
+
+\begin{longtable}{p{3.5cm} p{4cm} p{5cm}}
+\caption{Existing Systems Comparison} \label{tab:existing} \\
+\toprule
+\textbf{System / Product} & \textbf{Main Feature} & \textbf{Limitation} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{System / Product} & \textbf{Main Feature} & \textbf{Limitation} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Physical Mouse & Standard cursor control & Not accessible for users with mobility impairments. \\[4pt]
+Touchpad / Touchscreen & Touch-based input & Requires physical contact; limited gesture variety. \\[4pt]
+Leap Motion & Depth-based hand tracking & Requires specialized hardware; high cost. \\[4pt]
+Voice Control (Siri/Cortana) & Voice-based system control & Limited cursor control; noisy environment dependency. \\
+\end{longtable}
+
+\section{Research Gap}
+
+\begin{itemize}[noitemsep]
+  \item Existing systems often require specialized hardware (e.g., depth cameras).
+  \item Many systems are not easily deployable using only a standard webcam.
+  \item Approval and accessibility workflows for institutional use are rarely addressed.
+  \item Real-time gesture recognition with volume and brightness control in a single system is uncommon.
+\end{itemize}
+
+\section{Problem Statement}
+
+To design and implement a webcam-based AI Virtual Mouse system that uses hand gesture recognition
+to control computer cursor movement, mouse clicks, scrolling, and system settings (volume and
+brightness) in real-time, using only standard computer hardware, without requiring any specialized
+physical input devices.
+
+\section{Specific Objectives}
+
+\begin{enumerate}[noitemsep]
+  \item To implement real-time hand tracking using the MediaPipe library.
+  \item To develop gesture encoding and recognition for various hand gestures.
+  \item To map recognized gestures to system control actions (cursor movement, clicking, scrolling).
+  \item To implement system-level controls including volume and brightness adjustment.
+  \item To differentiate between dominant and non-dominant hands for adaptive control.
+  \item To provide real-time visual feedback via webcam overlay.
+\end{enumerate}
+
+\section{Scope of Work}
+
+The proposed system focuses on webcam-based hand gesture recognition for computer control. It
+includes gesture detection, cursor control, click actions, scroll actions, volume and brightness
+control, and real-time visual feedback. The system is designed for Windows OS and requires a
+standard webcam.
+
+\section{Limitations}
+
+\begin{itemize}[noitemsep]
+  \item Mobile application support is not implemented.
+  \item System performance may vary depending on lighting conditions.
+  \item Background clutter may reduce gesture recognition accuracy.
+  \item The gesture vocabulary is limited to predefined gestures only.
+  \item Continuous use may cause hand fatigue.
+\end{itemize}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\chapter{Proposed Methodology and Design}
+
+\section{System Overview}
+
+The proposed AI Virtual Mouse system uses a webcam-based client architecture. Users perform hand
+gestures in front of the webcam. The system captures video frames, processes them using the
+MediaPipe library to detect hand landmarks, recognizes gestures using the \texttt{HandRecog}
+class, and executes corresponding computer control commands via the \texttt{Controller} class.
+The system provides real-time visual feedback by overlaying detected landmarks on the live
+webcam feed.
+
+\section{System Architecture / Block Diagram}
+
+The system is organized into three main layers:
+\begin{itemize}[noitemsep]
+  \item \textbf{Video Capture} -- input via webcam
+  \item \textbf{Gesture Processing} -- MediaPipe, HandRecog
+  \item \textbf{Action Execution} -- Controller class
+\end{itemize}
+
+The \texttt{GestureController} class orchestrates the entire pipeline from frame capture to
+command execution.
+
+\section{Data Flow Diagrams}
+
+\subsection{DFD Level 0}
+
+At level 0, the system takes \textit{User Movements} as input, performs \textit{Motion
+Analysis} as processing, and produces \textit{Cursor Movements} as output. The entire AI
+Virtual Mouse system is shown as a single process.
+
+\subsection{DFD Level 1}
+
+At level 1, the DFD expands to show the internal processes: the User starts the Gesture
+Controller, which checks for a valid webcam connection, captures video frames, detects hand
+gestures, recognizes them, and triggers corresponding system actions.
+
+\subsection{DFD Level 2}
+
+At level 2, the DFD further details the gesture recognition loop: the Gesture Controller
+interacts with the Webcam to capture frames, passes them to the Gesture Recognition module,
+processes recognized Hand Gestures, triggers actions (Execute Commands), and can release
+camera resources to terminate the process.
+
+\section{Class Diagram}
+
+The system consists of three main classes:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{GestureController} -- manages webcam, frame processing, and hand classification
+  \item \textbf{HandRecog} -- processes landmarks and recognizes gestures
+  \item \textbf{Controller} -- executes system actions based on gestures
+\end{itemize}
+
+\texttt{GestureController} uses both \texttt{HandRecog} and \texttt{Controller}.
+
+\section{UML Diagram}
+
+The UML diagram shows the \texttt{GestureController} as the central component with methods for
+detecting, encoding, and handling gestures, and performing actions. It is associated with
+\texttt{MediaPipeLibrary}, \texttt{Gest} (gesture encodings), \texttt{User}, and
+\texttt{Computer} entities.
+
+\section{Sequence Diagram}
+
+The sequence diagram shows the interaction flow:
+
+\begin{enumerate}[noitemsep]
+  \item User starts the Python script
+  \item System initializes
+  \item Webcam initializes
+  \item Loop begins
+  \item System captures video frames
+  \item MediaPipe processes frames and detects hand gestures
+  \item System classifies and recognizes gestures
+  \item PyAutoGUI triggers corresponding actions
+  \item User receives control over computer functions
+\end{enumerate}
+
+\section{Algorithm of Proposed System}
+
+\begin{enumerate}
+  \item \textbf{Initialization:} Initialize the \texttt{GestureController} by setting up the
+    camera and necessary libraries such as OpenCV, MediaPipe, PyAutoGUI, etc.
+
+  \item \textbf{Hand Detection and Tracking:} Continuously capture frames from the webcam and
+    use the MediaPipe library to detect and track hand landmarks in each frame. Identify the
+    dominant hand based on the classification provided by MediaPipe.
+
+  \item \textbf{Gesture Recognition:} Process the hand landmarks to recognize various hand
+    gestures, such as fist, palm, pinch, finger gestures, etc. Map these gestures to
+    predefined commands or actions.
+
+  \item \textbf{Gesture Control:} Based on the recognized gestures, execute corresponding
+    actions on the computer. Actions may include moving the mouse cursor, clicking, scrolling,
+    adjusting system settings (e.g., brightness, volume), etc.
+
+  \item \textbf{Feedback and Visualization:} Provide visual feedback to the user by overlaying
+    hand landmarks and recognized gestures on the webcam feed.
+
+  \item \textbf{User Interaction:} Allow the user to interact with the system by performing
+    gestures, observing the feedback on the screen, and controlling the computer accordingly.
+
+  \item \textbf{Termination:} Terminate the gesture controller when the user decides to exit
+    or press the Enter key to close the application.
+\end{enumerate}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\chapter{Experimental Setup and Implementation Details}
+
+\section{Software Requirements and Specifications}
+
+\begin{table}[ht]
+\centering
+\caption{Software Requirements}
+\begin{tabular}{ll}
+\toprule
+\textbf{Component} & \textbf{Specification} \\
+\midrule
+Operating System       & Windows 11 \\
+Programming Language   & Python \\
+Computer Vision Library & OpenCV (cv2), MediaPipe \\
+Mouse/Keyboard Control & PyAutoGUI \\
+Volume Control         & pycaw, comtypes, ctypes \\
+Brightness Control     & screen\_brightness\_control \\
+Data Encoding          & Google Protocol Buffers \\
+Math Library           & Python math module \\
+Enum Library           & Python Enum (IntEnum) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Hardware Requirements}
+
+\begin{table}[ht]
+\centering
+\caption{Hardware Requirements}
+\begin{tabular}{ll}
+\toprule
+\textbf{Component} & \textbf{Specification} \\
+\midrule
+Processor & AMD Ryzen 5 5600H with Radeon Graphics 3.30\,GHz \\
+RAM       & 8.00\,GB \\
+Webcam    & Standard built-in or external USB webcam \\
+Keyboard  & Standard Windows Keyboard \\
+Mouse     & 2 or 3 Button Mouse (for fallback) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Technology Details}
+
+\begin{description}[noitemsep, leftmargin=2cm]
+  \item[\textbf{OpenCV (cv2)}] Used for real-time image processing tasks like capturing video
+    frames and image manipulation.
+  \item[\textbf{MediaPipe}] A machine learning framework by Google used for hand tracking and
+    landmark detection.
+  \item[\textbf{PyAutoGUI}] A Python library for cross-platform mouse and keyboard simulation
+    based on detected gestures.
+  \item[\textbf{Math Module}] Used for mathematical calculations such as computing distances
+    between landmarks.
+  \item[\textbf{ctypes / comtypes}] Used for interacting with Windows Core Audio APIs to
+    control system volume.
+  \item[\textbf{pycaw}] Python library for interacting with the Windows Core Audio APIs for
+    volume control.
+  \item[\textbf{screen\_brightness\_control}] Used for programmatically adjusting screen
+    brightness.
+  \item[\textbf{Google Protobuf}] Used for converting hand tracking results from MediaPipe
+    into a dictionary format.
+\end{description}
+
+\section{Project Plan}
+
+\begin{table}[ht]
+\centering
+\caption{Project Plan}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+\textbf{Work Task} & \textbf{Description} \\
+\midrule
+Literature Research & Related work done for research about needs of customers \\
+System Analysis     & Critical analysis and comparison of technologies and results achieved in research \\
+Design \& Planning  & Modeling, design, and dataset searching/creation \\
+Implementation      & Implementation of the literature review and proposed methodology \\
+Initial Report      & Prepare and upload initial report \\
+Final Report        & Prepare and upload final report \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Implementation Details}
+
+The implementation includes: camera initialization using OpenCV, hand landmark detection using
+MediaPipe Hands module, gesture classification using the \texttt{HandRecog} class, execution
+of system commands (cursor movement, clicks, scroll, volume, brightness) using the
+\texttt{Controller} class, and real-time visual feedback via the OpenCV display window titled
+\textit{Gesture Controller}.
+
+The \texttt{GestureController} class manages the main loop: it captures frames, flips them
+horizontally (mirror effect), converts to RGB for MediaPipe, processes results, classifies
+hands as major/minor, and calls the Controller to handle the corresponding actions.
+
+% ══════════════════════════════════════════════════════════════════════════════
+\chapter{Results Analysis and Discussion}
+
+\section{Test Specification}
+
+\subsection{Whitebox Testing}
+
+Unit Testing, Integration Testing, Boundary Testing, and Error Handling Testing were performed
+on individual components including gesture recognition, hand tracking, and controller actions.
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Unit Testing:} Test individual components such as gesture recognition, hand
+    tracking, and controller actions in isolation to ensure they function correctly.
+  \item \textbf{Integration Testing:} Verify the interaction between different modules to
+    ensure they integrate seamlessly.
+  \item \textbf{Boundary Testing:} Test with extreme inputs or boundary conditions to validate
+    behavior under these scenarios.
+  \item \textbf{Error Handling Testing:} Evaluate how the system responds to unexpected inputs
+    or errors.
+\end{itemize}
+
+\subsection{Blackbox Testing}
+
+Functionality, Boundary, Error Handling, and Compatibility testing were performed from the
+user perspective.
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Functionality Testing:} Ensured the script accurately detects various hand
+    gestures and each recognized gesture triggers the corresponding action.
+  \item \textbf{Boundary Testing:} Tested extreme cases such as detecting gestures with very
+    low or high hand visibility and at the edge of the webcam frame.
+  \item \textbf{Compatibility Testing:} Tested the script on different operating systems and
+    verified compatibility with various webcam devices.
+\end{itemize}
+
+\section{Test Cases}
+
+\begin{longtable}{c p{4cm} p{3cm} p{3cm} c}
+\caption{Test Cases} \label{tab:testcases} \\
+\toprule
+\textbf{TC ID} & \textbf{Test Case} & \textbf{Expected Result} & \textbf{Actual Output} & \textbf{Status} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{TC ID} & \textbf{Test Case} & \textbf{Expected Result} & \textbf{Actual Output} & \textbf{Status} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+1  & Camera initializes correctly              & Initializes without errors       & Initialized without errors      & Pass \\
+2  & Camera captures video frames              & Frames captured successfully     & Frames captured successfully    & Pass \\
+3  & Frames are flipped horizontally           & Frames flipped horizontally      & Flipped as expected             & Pass \\
+5  & Hand landmarks are detected               & Landmarks detected accurately    & Detected accurately             & Pass \\
+6  & Single hand detection                     & Only one hand detected           & One hand detected as expected   & Pass \\
+7  & Multiple hands detected                   & Multiple hands detected          & Detected as expected             & Pass \\
+9  & Gestures correctly encoded                & Gestures encoded accurately      & Encoded accurately              & Pass \\
+12 & Mouse movements smooth/responsive         & Smooth and responsive            & Smooth and responsive           & Pass \\
+13 & Left-click functionality                  & Left-click performed accurately  & Left-click performed accurately & Pass \\
+14 & Right-click functionality                 & Right-click performed accurately & Right-click performed accurately & Pass \\
+15 & Double-click functionality                & Double-click performed accurately & Double-click performed accurately & Pass \\
+19 & Brightness control works                  & Brightness adjusts as expected   & Brightness adjusts as expected  & Pass \\
+21 & Graceful termination on exit              & System terminates gracefully     & Terminates gracefully           & Pass \\
+22 & Compatibility across OS                   & Functions correctly on different OS & Functions correctly           & Pass \\
+25 & Users of different ages                   & Functions correctly with all ages & Functions correctly            & Pass \\
+\end{longtable}
+
+\section{Statistical Analysis}
+
+The system was tested with sample gesture data for various operations. The success rate is
+defined as:
+
+\[
+  \text{Success Rate} = \frac{\text{Successful Operations}}{\text{Total Operations}} \times 100
+\]
+
+\begin{table}[ht]
+\centering
+\caption{Statistical Analysis of System Performance}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Operation} & \textbf{Total Tests} & \textbf{Successful Tests} & \textbf{Success Rate} \\
+\midrule
+Gesture Detection          & 50 & 49 & 98\% \\
+Cursor Movement            & 50 & 50 & 100\% \\
+Left Click                 & 50 & 49 & 98\% \\
+Right Click                & 50 & 48 & 96\% \\
+Volume/Brightness Control  & 50 & 49 & 98\% \\
+Scroll Action              & 50 & 48 & 96\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Comparative Analysis}
+
+\begin{table}[ht]
+\centering
+\caption{Comparative Analysis of Input Systems}
+\begin{tabularx}{\textwidth}{Xcccc}
+\toprule
+\textbf{System} & \textbf{Physical Device} & \textbf{Accessibility} & \textbf{Gesture Support} & \textbf{Real-time Feedback} \\
+\midrule
+Physical Mouse         & Yes            & Limited   & None              & No  \\
+Touchpad               & Yes            & Limited   & Basic             & No  \\
+Leap Motion            & Yes (specialized) & Good   & Advanced          & Yes \\
+\textbf{Proposed System} & Webcam only  & Excellent & Multiple gestures & Yes \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Discussion on Successful and Failure Cases}
+
+\textbf{Successful cases} include: valid hand detection in well-lit environments, correct
+gesture recognition for cursor movement and clicks, smooth cursor control, and accurate
+volume/brightness adjustments.
+
+\textbf{Failure cases} may occur due to: poor lighting conditions causing low detection
+accuracy, hand occlusion or unusual angles, background clutter interfering with landmark
+detection, and minor inaccuracies in right-click and drag-and-drop operations. These can be
+mitigated by improving the fingertip detection algorithm and adding adaptive lighting
+compensation.
+
+% ──══════════════════════════════════════════════════════════════════════════
+\chapter{Conclusion and Future Scope}
+
+\section{Advantages}
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Hands-Free Interaction:} Allows users to control their computer without any
+    physical input devices.
+  \item \textbf{Intuitive Interface:} Gesture-based controls provide a natural and intuitive
+    way to interact with the computer.
+  \item \textbf{Real-Time Feedback:} Provides immediate feedback to users based on their hand
+    gestures, enhancing user experience.
+  \item \textbf{Flexible Applications:} Can be adapted for various tasks such as cursor
+    movement, clicking, scrolling, and system control.
+  \item \textbf{Accessibility:} Offers an alternative input method for individuals with
+    mobility impairments.
+\end{itemize}
+
+\section{Disadvantages}
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Learning Curve:} Users may need time to learn and memorize the supported hand
+    gestures and their corresponding actions.
+  \item \textbf{Accuracy Limitations:} Detection accuracy may vary depending on lighting
+    conditions, background clutter, and hand positioning.
+  \item \textbf{Fatigue:} Continuous gesture-based interaction may cause hand fatigue over
+    time.
+  \item \textbf{Limited Gesture Vocabulary:} The number of distinct gestures that can be
+    reliably recognized may be limited.
+  \item \textbf{Dependency on Hardware:} Relies on the availability and quality of a
+    compatible webcam.
+\end{itemize}
+
+\section{Future Scope}
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Voice Control Integration:} Combine gesture and voice recognition to allow
+    multimodal computer control.
+  \item \textbf{Improved Accessibility:} Continue improvements for users with disabilities as
+    AI technology advances.
+  \item \textbf{Mobile Application:} Develop a mobile version of the gesture controller for
+    smartphones and tablets.
+  \item \textbf{Facial Recognition Integration:} Combine with facial recognition for
+    multi-input control.
+  \item \textbf{Cloud Deployment:} Enable cloud-based gesture recognition for wider
+    accessibility.
+  \item \textbf{Expanded Gesture Vocabulary:} Improve the algorithm to support a wider set of
+    reliable gestures.
+\end{itemize}
+
+\section{Conclusion}
+
+This mini project presented an AI Virtual Mouse system using hand gesture recognition for
+computer control. The system provides real-time hand tracking, gesture recognition, cursor
+movement, mouse clicks (left, right, double), scroll actions, and volume and brightness
+control, all using only a standard webcam.
+
+The proposed system eliminates the need for a physical mouse and improves accessibility.
+Using MediaPipe for hand detection and tracking and PyAutoGUI for system control, we
+successfully implemented a real-time gesture-based computer control system. The system has
+some limitations such as minor accuracy reduction in right-click and drag-and-drop functions;
+these will be addressed in future work by improving the fingertip detection algorithm to
+produce more accurate results.
+
+% ── References ────────────────────────────────────────────────────────────────
+\begin{thebibliography}{9}
+
+\bibitem{cao2021}
+Z.~Cao, G.~Hidalgo, T.~Simon, S.-E.~Wei, and Y.~Sheikh,
+``OpenPose: Realtime Multi-Person 2D Pose Estimation Using Part Affinity Fields,''
+\textit{IEEE Transactions on Pattern Analysis and Machine Intelligence}, vol.\ 43, no.\ 1, pp.\ 172--186, Jan.\ 2021.
+
+\bibitem{simon2017}
+T.~Simon, H.~Joo, I.~Matthews, and Y.~Sheikh,
+``Hand Keypoint Detection in Single Images using Multiview Bootstrapping,''
+\textit{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pp.\ 1145--1153, 2017.
+
+\end{thebibliography}
+
+\end{document}
